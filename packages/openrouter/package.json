@@ -1,0 +1,33 @@
+{
+  "name": "@tiny-orchestrator/openrouter",
+  "version": "0.1.0",
+  "description": "OpenRouter provider adapter for tiny-orchestrator (fetch-based, OpenAI-compatible).",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "tiny-orchestrator": "^0.2.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}

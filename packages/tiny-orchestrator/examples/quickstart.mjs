@@ -1,7 +1,7 @@
 import { Orchestrator } from "tiny-orchestrator";
-import { OpenAIChatLLM } from "@tiny-orchestrator/openai";
+import { OpenRouterChatLLM } from "@tiny-orchestrator/openrouter";
 
-const llm = new OpenAIChatLLM();
+const llm = new OpenRouterChatLLM();
 
 const tools = [
   {

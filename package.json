@@ -6,8 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm -w tiny-orchestrator run build && npm -w @tiny-orchestrator/openai run build",
-    "lint": "npm -w tiny-orchestrator run lint && npm -w @tiny-orchestrator/openai run lint",
+    "build": "npm -w tiny-orchestrator run build && npm -w @tiny-orchestrator/openai run build && npm -w @tiny-orchestrator/openrouter run build",
+    "lint": "npm -w tiny-orchestrator run lint && npm -w @tiny-orchestrator/openai run lint && npm -w @tiny-orchestrator/openrouter run lint",
     "test": "npm -w tiny-orchestrator run test",
     "test:node": "npm -w tiny-orchestrator run test:node"
   }

@@ -12,23 +12,23 @@ A tiny TypeScript multi-agent runner with sane defaults, templates, and traces.
 ## Install (core + provider)
 
 ```bash
-# npm
-npm i tiny-orchestrator @tiny-orchestrator/openai
+# npm (recommended)
+npm i tiny-orchestrator @tiny-orchestrator/openrouter
 
 # bun
-bun add tiny-orchestrator @tiny-orchestrator/openai
+bun add tiny-orchestrator @tiny-orchestrator/openrouter
 ```
 
 ## Usage
 
 ```ts
 import { Orchestrator } from "tiny-orchestrator";
-import { OpenAIChatLLM } from "@tiny-orchestrator/openai";
+import { OpenRouterChatLLM } from "@tiny-orchestrator/openrouter";
 
-const llm = new OpenAIChatLLM({
-  // Or just set OPENAI_API_KEY in env.
-  apiKey: process.env.OPENAI_API_KEY,
-  model: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
+const llm = new OpenRouterChatLLM({
+  // Or just set OPENROUTER_API_KEY / OPENROUTER_MODEL in env.
+  apiKey: process.env.OPENROUTER_API_KEY,
+  model: process.env.OPENROUTER_MODEL ?? "openai/gpt-4o-mini",
 });
 
 const tools = [

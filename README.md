@@ -2,17 +2,19 @@
 
 A tiny TypeScript multi-agent runner with a tools-first loop, sane defaults, and traces.
 
-## Quickstart (OpenAI)
+## Quickstart (OpenRouter — recommended)
 
 ```bash
-npm i tiny-orchestrator @tiny-orchestrator/openai
-export OPENAI_API_KEY="..."
+npm i tiny-orchestrator @tiny-orchestrator/openrouter
+export OPENROUTER_API_KEY="..."
+export OPENROUTER_MODEL="openai/gpt-4o-mini"
 node ./packages/tiny-orchestrator/examples/quickstart.mjs
 ```
 
 ## Packages
 
 - `tiny-orchestrator` — core orchestrator + types
+- `@tiny-orchestrator/openrouter` — OpenRouter adapter (fetch-based, OpenAI-compatible) — recommended
 - `@tiny-orchestrator/openai` — OpenAI adapter (fetch-based)
 
 ## What you get
