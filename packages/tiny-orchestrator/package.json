@@ -1,6 +1,6 @@
 {
   "name": "tiny-orchestrator",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Minimal LLM orchestrator: JSON tool protocol + execution loop + traces.",
   "license": "MIT",
   "author": "Dan Korotenko",

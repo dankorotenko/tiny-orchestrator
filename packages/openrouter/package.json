@@ -1,6 +1,6 @@
 {
   "name": "@tiny-orchestrator/openrouter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "OpenRouter provider for tiny-orchestrator (fetch-based, OpenAI-compatible).",
   "license": "MIT",
   "author": "Dan Korotenko",
