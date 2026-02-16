@@ -13,16 +13,16 @@ A tiny TypeScript multi-agent runner with sane defaults, templates, and traces.
 
 ```bash
 # bun
-bun add @dankorotenko/tiny-orchestrator
+bun add tiny-orchestrator
 
 # npm
-npm i @dankorotenko/tiny-orchestrator
+npm i tiny-orchestrator
 ```
 
 ## Usage
 
 ```ts
-import { Orchestrator } from "@dankorotenko/tiny-orchestrator";
+import { Orchestrator } from "tiny-orchestrator";
 
 const llm = {
   async complete({ system, messages }) {
@@ -43,7 +43,7 @@ console.log(out.trace);
 ## Templates
 
 ```ts
-import { researcher, reviewer, writer } from "@dankorotenko/tiny-orchestrator/templates";
+import { researcher, reviewer, writer } from "tiny-orchestrator/templates";
 
 console.log(researcher(), reviewer(), writer());
 ```
