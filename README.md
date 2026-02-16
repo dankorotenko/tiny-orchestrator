@@ -1,5 +1,9 @@
 # tiny-orchestrator
 
+[![npm](https://img.shields.io/npm/v/tiny-orchestrator)](https://www.npmjs.com/package/tiny-orchestrator)
+[![npm](https://img.shields.io/npm/v/@tiny-orchestrator/openrouter)](https://www.npmjs.com/package/@tiny-orchestrator/openrouter)
+[![license](https://img.shields.io/npm/l/tiny-orchestrator)](./packages/tiny-orchestrator/LICENSE)
+
 Minimal LLM orchestrator: **JSON tool protocol + execution loop + traces**.
 
 You write tools in code, plug in an LLM provider, and the orchestrator runs a step loop until it returns a final answer.
@@ -84,11 +88,26 @@ The core includes:
 - loose JSON parsing (can extract the first JSON object if the model adds extra text)
 - one corrective retry if the model output isn’t valid JSON
 
+## Choosing models (OpenRouter)
+
+OpenRouter lets users access many models via a single API.
+
+Env vars:
+
+```bash
+export OPENROUTER_API_KEY="..."
+export OPENROUTER_MODEL="openai/gpt-4o-mini"   # or e.g. anthropic/claude-3.5-sonnet, google/gemini-1.5-flash
+
+# Optional (recommended by OpenRouter)
+export OPENROUTER_SITE_URL="https://your-site.com"
+export OPENROUTER_APP_NAME="tiny-orchestrator demo"
+```
+
 ## Packages
 
 - `tiny-orchestrator` — core orchestrator + types
-- `@tiny-orchestrator/openrouter` — OpenRouter adapter (fetch-based, OpenAI-compatible) — recommended
-- `@tiny-orchestrator/openai` — OpenAI adapter (fetch-based)
+- `@tiny-orchestrator/openrouter` — OpenRouter provider (fetch-based, OpenAI-compatible) — recommended
+- `@tiny-orchestrator/openai` — OpenAI provider (fetch-based)
 
 ## Templates
 
