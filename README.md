@@ -8,7 +8,7 @@ A tiny TypeScript multi-agent runner with a tools-first loop, sane defaults, and
 npm i tiny-orchestrator @tiny-orchestrator/openrouter
 export OPENROUTER_API_KEY="..."
 export OPENROUTER_MODEL="openai/gpt-4o-mini"
-node ./packages/tiny-orchestrator/examples/quickstart.mjs
+node examples/quickstart.mjs
 ```
 
 ## Packages

@@ -8,6 +8,25 @@ export class Orchestrator {
   private tools: Tool[];
   private budgets: Required<NonNullable<OrchestratorOptions["budgets"]>>;
 
+  private async completeJSON(input: Parameters<OrchestratorOptions["llm"]["complete"]>[0]): Promise<string> {
+    const out1 = await this.llm.complete(input);
+    const t1 = out1.content.trim();
+    if (safeParseJSONLoose(t1)) return t1;
+
+    // One corrective retry. This is the common failure mode: the model adds prose.
+    const retryMessages: LLMMessage[] = [
+      ...input.messages,
+      {
+        role: "user",
+        content:
+          "Your previous response was not valid JSON. Reply again with ONLY a single JSON object that follows the protocol. No markdown. No extra text.",
+      },
+    ];
+
+    const out2 = await this.llm.complete({ ...input, messages: retryMessages });
+    return out2.content.trim();
+  }
+
   constructor(opts: OrchestratorOptions) {
     this.llm = opts.llm;
     this.tools = opts.tools ?? [];
@@ -53,13 +72,12 @@ export class Orchestrator {
     ];
 
     for (let step = 0; step < this.budgets.maxSteps; step++) {
-      const out = await this.llm.complete({ system, messages, signal: abort.signal });
-      const text = out.content.trim();
+      const text = await this.completeJSON({ system, messages, signal: abort.signal });
 
       // Always record model output in the conversation.
       messages.push({ role: "assistant", content: text });
 
-      const parsed = safeParseJSON(text);
+      const parsed = safeParseJSONLoose(text);
       if (!parsed || typeof parsed !== "object") {
         clearTimeout(timer);
         tracePush({ t: "run.end", runId, at: Date.now(), summary: text });
@@ -120,11 +138,64 @@ export class Orchestrator {
   }
 }
 
-function safeParseJSON(text: string): unknown | null {
+function safeParseJSONLoose(text: string): unknown | null {
+  // Strict first.
   try {
     return JSON.parse(text);
   } catch {
+    // Fall through.
+  }
+
+  // Then try to extract the first JSON object from messy output.
+  const extracted = extractFirstJSONObject(text);
+  if (!extracted) return null;
+
+  try {
+    return JSON.parse(extracted);
+  } catch {
     return null;
   }
+}
+
+function extractFirstJSONObject(text: string): string | null {
+  const start = text.indexOf("{");
+  if (start < 0) return null;
+
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+
+  for (let i = start; i < text.length; i++) {
+    const ch = text[i];
+
+    if (inString) {
+      if (escape) {
+        escape = false;
+        continue;
+      }
+      if (ch === "\\") {
+        escape = true;
+        continue;
+      }
+      if (ch === "\"") {
+        inString = false;
+      }
+      continue;
+    }
+
+    if (ch === "\"") {
+      inString = true;
+      continue;
+    }
+
+    if (ch === "{") depth++;
+    if (ch === "}") depth--;
+
+    if (depth === 0) {
+      return text.slice(start, i + 1);
+    }
+  }
+
+  return null;
 }
 
