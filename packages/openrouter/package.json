@@ -1,8 +1,25 @@
 {
   "name": "@tiny-orchestrator/openrouter",
   "version": "0.1.0",
-  "description": "OpenRouter provider adapter for tiny-orchestrator (fetch-based, OpenAI-compatible).",
+  "description": "OpenRouter provider for tiny-orchestrator (fetch-based, OpenAI-compatible).",
   "license": "MIT",
+  "author": "Dan Korotenko",
+  "homepage": "https://github.com/dankorotenko/tiny-orchestrator#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dankorotenko/tiny-orchestrator.git",
+    "directory": "packages/openrouter"
+  },
+  "bugs": {
+    "url": "https://github.com/dankorotenko/tiny-orchestrator/issues"
+  },
+  "keywords": [
+    "llm",
+    "openrouter",
+    "openai-compatible",
+    "provider",
+    "typescript"
+  ],
   "type": "module",
   "exports": {
     ".": {

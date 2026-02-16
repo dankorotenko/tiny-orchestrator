@@ -1,8 +1,28 @@
 {
   "name": "tiny-orchestrator",
   "version": "0.2.0",
-  "description": "A tiny TypeScript multi-agent runner with sane defaults, templates, and traces.",
+  "description": "Minimal LLM orchestrator: JSON tool protocol + execution loop + traces.",
   "license": "MIT",
+  "author": "Dan Korotenko",
+  "homepage": "https://github.com/dankorotenko/tiny-orchestrator#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dankorotenko/tiny-orchestrator.git",
+    "directory": "packages/tiny-orchestrator"
+  },
+  "bugs": {
+    "url": "https://github.com/dankorotenko/tiny-orchestrator/issues"
+  },
+  "keywords": [
+    "llm",
+    "agent",
+    "orchestrator",
+    "tool-calling",
+    "tools",
+    "openrouter",
+    "openai",
+    "typescript"
+  ],
   "type": "module",
   "exports": {
     ".": {

@@ -1,6 +1,6 @@
 # tiny-orchestrator
 
-A tiny TypeScript agent runner with a **tools-first loop**, sane defaults, and traces.
+Minimal LLM orchestrator: **JSON tool protocol + execution loop + traces**.
 
 You write tools in code, plug in an LLM provider, and the orchestrator runs a step loop until it returns a final answer.
 
