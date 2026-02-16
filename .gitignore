@@ -1,0 +1,5 @@
+node_modules
+bun.lock
+npm-debug.log*
+dist
+.DS_Store
