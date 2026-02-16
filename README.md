@@ -15,6 +15,12 @@ export OPENROUTER_MODEL="openai/gpt-4o-mini"
 node examples/quickstart.mjs
 ```
 
+## Advanced example (multi-step + trace)
+
+```bash
+node examples/advanced.mjs
+```
+
 ## Install
 
 ### Core + OpenRouter (recommended)
