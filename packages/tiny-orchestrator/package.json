@@ -1,0 +1,39 @@
+{
+  "name": "tiny-orchestrator",
+  "version": "0.2.0",
+  "description": "A tiny TypeScript multi-agent runner with sane defaults, templates, and traces.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./templates": {
+      "types": "./dist/templates/index.d.ts",
+      "import": "./dist/templates/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "test:node": "npm run build && node ./scripts/node-smoke-test.mjs",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run build && npm run lint && npm test"
+  },
+  "devDependencies": {
+    "@esbuild/darwin-arm64": "0.27.3",
+    "@types/node": "^20.19.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

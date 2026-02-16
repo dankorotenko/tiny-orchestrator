@@ -2,7 +2,7 @@ import { Orchestrator } from "../dist/index.js";
 
 const llm = {
   async complete() {
-    return { content: "smoke" };
+    return { content: JSON.stringify({ type: "final", content: "smoke" }) };
   },
 };
 

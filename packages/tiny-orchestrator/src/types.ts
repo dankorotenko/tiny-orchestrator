@@ -67,7 +67,8 @@ export type OrchestratorOptions = {
   tools?: Tool[];
   budgets?: {
     timeMs?: number;
-    maxToolCalls?: number;
+    /** Max LLM steps (each step may be a tool call or final response). */
+    maxSteps?: number;
     maxSpawns?: number;
   };
 };
